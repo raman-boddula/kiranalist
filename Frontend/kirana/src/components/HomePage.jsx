@@ -2,27 +2,35 @@ import React from 'react';
 import axios from "axios";
 import { Product } from "./Product";
 import  {AiOutlineClose}  from 'react-icons/ai';
-import {  Input, Select} from "antd";
+import {  Button, Input, Select} from "antd";
 const { Option } = Select;
 export const HomePage = () => {
     const [data, setData] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
     const [showDiv, setShowDiv] = React.useState(false);
     const [product, setProduct] = React.useState("");
+    const [page, setPage] = React.useState(1);
+    const [quantity, setQuantity] = React.useState(0);
+    const [weight,setWeight] = React.useState(0)
     const [list, setList] = React.useState([]);
     React.useEffect(() => {
-        axios.get('http://localhost:2345/products').then((res) => {
+        axios.get(`http://localhost:2345/products/?Page=${page}`).then((res) => {
             console.log(res);
-            setData(res.data.products);
+            setData([...data,...res.data.products]);
             setIsLoading(false);
         })
-    }, []);
+    }, [page]);
     const handleShowDiv = (id) => {
         setProduct(id);
         setShowDiv(true);
     }
-    const handleQuantity = (e) => {
-        
+    window.addEventListener("scroll", () => {
+        if (window.scrollY + window.innerHeight >=  document.documentElement.scrollHeight) {
+        //   setPage(page+1);
+        };
+      });
+    const handleQuantity = (name) => {
+        setList([...list,{[name]:(Number(quantity)*Number(weight))/1000}]);
     }
     return (isLoading ? <div>Loading...</div> :
         <div className="HomePage">
@@ -42,14 +50,15 @@ export const HomePage = () => {
                         </div>
                         <div>
                             <h2>{e.Name}</h2>
-                            <Input type="number" onChange={(e) => console.log(e.target.value)} />
+                            <Input type="number" onChange={(e) => setQuantity(e.target.value)} />
                             <br/><br/>
-                            <Select style={{width:"100%"}} onChange={(value) => console.log(value)}>
+                            <Select style={{width:"100%"}} onChange={(value) => setWeight(value)}>
                                 <Option value="100">100gms</Option>
                                 <Option value="250">250gms</Option>
                                 <Option value="500">500gms</Option>
                                 <Option value="1000">1kg</Option>
-                            </Select>
+                            </Select><br/><br/>
+                            <Button style={{width:"100%"}} type="primary" onClick={()=>handleQuantity(e.Name)}>Add To List</Button>
                         </div>
                     </div>
                 </div>))

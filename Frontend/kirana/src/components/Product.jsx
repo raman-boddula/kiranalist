@@ -9,7 +9,7 @@ export const Product = ({ product,handleShowDiv }) => {
                 <img src={product?.Image[0]} alt={product.Name} /><br/><br/>
                 <h4>{product.Name}</h4><br/>
             </div>
-            {showbutton ? <Button type="primary" shape="round" size="large" onClick={()=>handleShowDiv(product._id)}>Add To List</Button> : null}
+            {showbutton ? <Button type="primary" shape="round" size="large" onClick={()=>handleShowDiv(product._id)}>Add Quantity</Button> : null}
         </div>
     )
 }

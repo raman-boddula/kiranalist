@@ -1,7 +1,7 @@
 // https://www.kiranalist.com/media/image/0/default-image.png?size=250
 import React from 'react';
 import { Dropdown, Menu } from 'antd';
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 export const Navbar = () => {
     const userName = JSON.parse(localStorage.getItem('isAuth'))?.user?.Name;
@@ -20,7 +20,7 @@ export const Navbar = () => {
         <>
             <div className="navbar">
                 <div>
-                    <img src="https://raw.githubusercontent.com/raman-boddula/kiranaList/main/Frontend/kirana/public/kiranaList.jpg" alt="logo" />
+                    <Link to="/"><img src="https://raw.githubusercontent.com/raman-boddula/kiranaList/main/Frontend/kirana/public/kiranaList.jpg" alt="logo" /></Link>
                 </div>
                 {
                     userName ?<div>

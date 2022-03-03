@@ -67,3 +67,5 @@ router.delete("/:id", async (req, res) => {
     res.status(400).json({ Status: "Failed", error: err.message });
   }
 });
+
+module.exports = router;

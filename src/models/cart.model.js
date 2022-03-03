@@ -5,12 +5,12 @@ const user = require("./user.model");
 const cartSchema = new mongoose.Schema(
   {
     user_id: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: user,
       required: true,
     },
     product_id: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: product,
       requried: true,
     },

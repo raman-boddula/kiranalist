@@ -3,8 +3,8 @@ const express = require("express");
 
 const productSchema = new mongoose.Schema(
   {
-    Name: { type: "string", required: true },
-    Image: [{ type: "string", required: true }],
+    Name: { type: String, required: true },
+    Image: [{ type: String, required: true }],
   },
   {
     versionKey: false,

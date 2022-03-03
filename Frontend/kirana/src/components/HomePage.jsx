@@ -48,6 +48,15 @@ export const HomePage = () => {
                         <div>
                             <img src={e.Image[0]} alt={e.Name}/>
                         </div>
+                        &ensp;
+                        &ensp;
+                        &ensp;
+                        &ensp;
+                        &ensp;
+                        &ensp;
+                        &ensp;
+                        &ensp;
+                        &ensp;
                         <div>
                             <h2>{e.Name}</h2>
                             <Input type="number" onChange={(e) => setQuantity(e.target.value)} />

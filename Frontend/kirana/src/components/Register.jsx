@@ -26,21 +26,21 @@ export const Register = () => {
 
     }
     return (
-        <div style={{width:"25%",marginLeft:"37%"}}>
+        <div className="loginForm" style={{width:"25%",marginLeft:"37%",backgroundColor:"white",marginTop:"1em",borderRadius:'0.5em',padding:'1em'}}>
             <div>
                 <h1>Register Page</h1></div>
             <div>
                 <Form>
-                    <label>Name</label><Input type="text" name="Name" onChange={handleChange}placeholder="enter your name" />
+                    <div style={{display:'grid',gridTemplateColumns:"20% 75%"}}><label>Name</label><Input type="text" name="Name" onChange={handleChange}placeholder="enter your name" /></div>
                     <div><br></br></div>
-                    <label>Email</label>
-                    <Input type="email" name="Email" onChange={handleChange} placeholder="enter your email" />
+                    <div style={{display:'grid',gridTemplateColumns:"20% 75%"}}><label>Email</label>
+                    <Input type="email" name="Email" onChange={handleChange} placeholder="enter your email" /></div>
                     <div><br></br></div>
-                    <label>Password</label>
-                    <Input type="password" name="Password" onChange={handleChange} placeholder="enter your password" />
+                    <div style={{display:'grid',gridTemplateColumns:"20% 75%"}}><label>Password</label>
+                    <Input type="password" name="Password" onChange={handleChange} placeholder="enter your password" /></div>
                     <div><br></br></div>
-                    <label>Date of Birth  &ensp;</label>
-                    <Input type="number" name="Age" onChange={handleChange} placeholder="Enter your age" />
+                    <div style={{display:'grid',gridTemplateColumns:"20% 75%"}}><label>Date of Birth  &ensp;</label>
+                    <Input type="number" name="Age" onChange={handleChange} placeholder="Enter your age" /></div>
                     <div><br></br></div>
                     <label>Gender &ensp;</label>
                     <Select name="Genger" style={{width:"20%"}}onChange={(value)=>handleGender(value)}>

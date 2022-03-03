@@ -1,25 +1,29 @@
 import React from 'react';
 import { Button, Input, Form } from "antd";
 import { Link } from 'react-router-dom';
+import {useNavigate} from "react-router-dom"
 import axios from 'axios';
+import "./Style.css"
 export const Login = () => {
     const [user, setUser] = React.useState({});
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUser({...user, [name]: value});
     }
+    const navigate = useNavigate();
     const handleSubmit=(e)=>{
         e.preventDefault();
         console.log("loginUser", user)
         axios.post("http://localhost:2345/login", user).then((response) => {
             console.log("success", response);
             localStorage.setItem("isAuth", JSON.stringify(response.data));
+            navigate('/')
         }).catch((error) => {
             alert(`Error Message ${error}`);
         })
     }
     return (
-        <div className="loginForm" style={{width:"25%",marginLeft:"37%"}}>
+        <div className="loginForm" style={{ width: "25%",marginLeft: "37%",marginTop: "1em",backgroundColor:"white",padding:'1em',borderRadius:"0.5em"}}>
             <div>
                 <h1>Login page</h1>
                 <div>

@@ -5,6 +5,7 @@ import { Product } from "./Product";
 export const HomePage = () => {
     const [data, setData] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
+    const [showDiv, setShowDiv] = React.useState(false);
     React.useEffect(() => {
         axios.get('http://localhost:2345/products').then((res) => {
             console.log(res);
@@ -13,11 +14,17 @@ export const HomePage = () => {
         })
     }, []);
     console.log(data);
-    return ( isLoading ? <div>Loading...</div> :
-        <div className="products">
-            {data.map((e) => (
-                <Product product={e} />
-            ))}
+    const handleShowDiv = () => {
+        setShowDiv(!showDiv);
+    }
+    return (isLoading ? <div>Loading...</div> :
+        <div className="HomePage">
+            <div className="products">
+                {data.map((e) => (
+                    <Product product={e} handleShowDiv={handleShowDiv}/>
+                ))}
+            </div>
+            {showDiv ? <div className="detailsDiv">Hello</div> : null}
         </div>
     )
 }

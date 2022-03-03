@@ -3,11 +3,11 @@ const bcrypt = require("bcryptjs");
 
 const userSchema = new Schema(
   {
-    Name: { type: "string", required: true },
-    Email: { type: "string", required: true, unique: true },
-    Password: { type: "string", required: true },
-    Age: { type: "number", required: true },
-    Gender: { type: "string", required: true },
+    Name: { type: String, required: true },
+    Email: { type: String, required: true, unique: true },
+    Password: { type: String, required: true },
+    Age: { type: String, required: true },
+    Gender: { type: String, required: true },
   },
   {
     versionKey: false,

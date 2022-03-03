@@ -15,22 +15,22 @@ const userSchema = new Schema(
   }
 );
 
-module.exports = model("user", userSchema);
-
 userSchema.pre("save", function (next) {
   if (!this.isModified("Password")) return next();
-  bcrypt.hash(this.Password, 10, function (err, hash) {
-    if (err) return err;
+  bcrypt.hash(this.Password, 10, (err, hash) => {
+    console.log("Password", this.Password);
     this.Password = hash;
     return next();
   });
 });
 
-userSchema.methods.checkPassword = function (password) {
+userSchema.methods.checkPassword = function (Password) {
   return new Promise((res, rej) => {
-    bcrypt.compare(password, this.Password, function (err, same) {
+    bcrypt.compare(Password, this.Password, function (err, same) {
       if (err) return rej(err);
       return res(same);
     });
   });
 };
+
+module.exports = model("user", userSchema);

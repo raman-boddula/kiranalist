@@ -1,5 +1,6 @@
 import "./App.css";
 import { Navbar } from "./components/Navbar";
+import { HomePage } from "./components/HomePage";
 import { Routes, Route } from "react-router-dom";
 import { Register } from "./components/Register";
 import { PrivateRoute } from "./components/PrivateRoute";
@@ -8,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <HomePage />
       <Routes>
         <Route path="/register" element={<Register />}></Route>
         <Route

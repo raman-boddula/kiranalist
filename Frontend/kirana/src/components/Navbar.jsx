@@ -6,7 +6,7 @@ export const Navbar = () => {
         <>
             <div className="navbar">
                 <div>
-                    <img src="https://raw.githubusercontent.com/raman-boddula/kiranalist/main/Frontend/kirana/public/kiranaList.jpg" alt="logo" />
+                    <img src="https://raw.githubusercontent.com/raman-boddula/kiranaList/main/Frontend/kirana/public/kiranaList.jpg" alt="logo" />
                 </div>
                 <div>
                     <p>Welcome {user}</p>

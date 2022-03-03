@@ -9,15 +9,13 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <HomePage />
       <Routes>
         <Route path="/register" element={<Register />}></Route>
         <Route
           path="/"
-          element={<PrivateRoute>{<h1>Homepage</h1>}</PrivateRoute>}
+          element={<PrivateRoute>{<HomePage />}</PrivateRoute>}
         ></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route></Route>
       </Routes>
     </div>
   );

@@ -1,17 +1,29 @@
 import React from 'react';
-import { Form, Input, Button ,DatePicker, Select} from "antd";
+import { Form, Input, Button, Select} from "antd";
 import { Option } from 'antd/lib/mentions';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 export const Register = () => {
-    const [user,setUser]=React.useState({})
+    const [user, setUser] = React.useState({});
+    const navigate = useNavigate();
     const handleChange = (e) => {
-        console.log(e.target)
         const { name, value } = e.target;
         setUser({...user,[name]:value})
+    }
+    const handleGender = (value) => {
+        setUser({ ...user, Gender: value });
     }
     const handleClick = (e) => {
         e.preventDefault();
         console.log('registered User', user);
+        axios.post("http://localhost:2345/register", user).then((response) => {
+            console.log(response);
+            navigate("/login");
+        }).catch((error) => {
+            alert (`Error Message : ${error}`);
+        })
+
     }
     return (
         <div style={{width:"25%",marginLeft:"37%"}}>
@@ -28,10 +40,10 @@ export const Register = () => {
                     <Input type="password" name="Password" onChange={handleChange} placeholder="enter your password" />
                     <div><br></br></div>
                     <label>Date of Birth  &ensp;</label>
-                    <DatePicker  name="Age" onChange={handleChange} placeholder="Enter your age" />
+                    <Input type="number" name="Age" onChange={handleChange} placeholder="Enter your age" />
                     <div><br></br></div>
                     <label>Gender &ensp;</label>
-                    <Select name="Genger" style={{width:"20%"}}onChange={handleChange}>
+                    <Select name="Genger" style={{width:"20%"}}onChange={(value)=>handleGender(value)}>
                         <Option value="male">Male</Option>
                         <Option value="female">Female</Option>
                     </Select>

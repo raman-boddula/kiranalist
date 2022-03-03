@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Input, Form } from "antd";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 export const Login = () => {
     const [user, setUser] = React.useState({});
     const handleChange = (e) => {
@@ -9,7 +10,13 @@ export const Login = () => {
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log("loginUser",user)
+        console.log("loginUser", user)
+        axios.post("http://localhost:2345/login", user).then((response) => {
+            console.log("success", response);
+            localStorage.setItem("isAuth", JSON.stringify(response.data));
+        }).catch((error) => {
+            alert(`Error Message ${error}`);
+        })
     }
     return (
         <div className="loginForm" style={{width:"25%",marginLeft:"37%"}}>

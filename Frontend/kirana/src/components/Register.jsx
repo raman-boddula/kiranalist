@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Input, Button, Select} from "antd";
-import { Option } from 'antd/lib/mentions';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+const { Option } = Select;
 export const Register = () => {
     const [user, setUser] = React.useState({});
     const navigate = useNavigate();

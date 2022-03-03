@@ -11,10 +11,11 @@ const ProductController = require("./controller/Product.controller");
 const cartController = require("./controller/cart.controller");
 
 app.use("/register", register);
+
 app.use("/login", login);
 
 app.use("/products", ProductController);
 
-app.use("/cart", cartController);
+app.use("/carts", cartController);
 
 module.exports = app;

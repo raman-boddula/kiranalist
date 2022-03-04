@@ -5,11 +5,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "antd/dist/antd.css";
 import { BrowserRouter } from "react-router-dom";
+import { ListContextProvider } from "./contexts/ListContext";
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ListContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ListContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

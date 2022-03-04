@@ -3,7 +3,8 @@ import axios from "axios";
 import { Product } from "./Product";
 import { AiOutlineClose } from 'react-icons/ai';
 import { TailSpin } from  'react-loader-spinner'
-import {  Button, Input, Select,Pagination} from "antd";
+import { Button, Input, Select, Pagination } from "antd";
+import {ListContext} from "../contexts/ListContext"
 const { Option } = Select;
 
 export const HomePage = () => {
@@ -15,7 +16,7 @@ export const HomePage = () => {
     const [total, setTotal] = React.useState(0);
     const [quantity, setQuantity] = React.useState(0);
     const [weight,setWeight] = React.useState(0)
-    const [list, setList] = React.useState([]);
+    const {handleList} = React.useContext(ListContext)
     React.useEffect(() => {
         setIsLoading(true);
         axios.get(`http://localhost:2345/products/?Page=${page}`).then((res) => {
@@ -37,7 +38,7 @@ export const HomePage = () => {
     //   });
 
     const handleQuantity = (name) => {
-        setList([...list,{[name]:(Number(quantity)*Number(weight))/1000}]);
+        handleList({[name]:(Number(quantity)*Number(weight))/1000});
     }
     const handlePageChange = (value) => {
         console.log(value);

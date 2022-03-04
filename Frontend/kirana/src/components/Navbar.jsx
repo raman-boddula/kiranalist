@@ -1,10 +1,11 @@
-// https://www.kiranalist.com/media/image/0/default-image.png?size=250
 import React from 'react';
 import { Dropdown, Menu } from 'antd';
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import {ListContext} from "../contexts/ListContext"
 
 export const Navbar = () => {
     const userName = JSON.parse(sessionStorage.getItem('isAuth'))?.user?.Name;
+    const { list } = React.useContext(ListContext);
     const navigate = useNavigate();
     const handleLogout = () => {
         sessionStorage.removeItem('isAuth');
@@ -22,11 +23,15 @@ export const Navbar = () => {
                 <div>
                     <Link to="/"><img src="https://raw.githubusercontent.com/raman-boddula/kiranaList/main/Frontend/kirana/public/kiranaList.jpg" alt="logo" /></Link>
                 </div>
-                {
-                    userName ?<div>
-                    <Dropdown.Button overlay={menu} placement="bottomRight" style={{ marginTop: "10px" }}>Welcome {userName}</Dropdown.Button>
-                    <img src="https://cdn-icons-png.flaticon.com/512/650/650661.png" alt="Notepad" />
-                &ensp;</div>:null}
+                {userName ?
+                    <div>
+                        <Dropdown.Button overlay={menu} placement="bottomRight" style={{ marginTop: "10px" }}>Welcome {userName}</Dropdown.Button>
+                        <div style={{position: "relative"}}>
+                            <img src="https://cdn-icons-png.flaticon.com/512/650/650661.png" alt="Notepad" style={{cursor: "pointer"}}/>
+                            <h3 className="counter" style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-35%,-40%)",color:"#4b6e7f"}}>{list.length}</h3>
+                        </div>
+                    </div>
+                : null}
             </div>
         </>
     )

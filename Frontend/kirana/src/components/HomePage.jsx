@@ -48,20 +48,12 @@ export const HomePage = () => {
                         <div>
                             <img src={e.Image[0]} alt={e.Name}/>
                         </div>
-                        &ensp;
-                        &ensp;
-                        &ensp;
-                        &ensp;
-                        &ensp;
-                        &ensp;
-                        &ensp;
-                        &ensp;
-                        &ensp;
                         <div>
                             <h2>{e.Name}</h2>
-                            <Input type="number" onChange={(e) => setQuantity(e.target.value)} />
+                            <Input type="number" placeholder="choose the quantity" onChange={(e) => setQuantity(e.target.value)} />
                             <br/><br/>
-                            <Select style={{width:"100%"}} onChange={(value) => setWeight(value)}>
+                            <Select style={{width:"100%"}} placeholder="choose the weight" onChange={(value) => setWeight(value)}>
+                                {/* <Option default>Choose the weight</Option> */}
                                 <Option value="100">100gms</Option>
                                 <Option value="250">250gms</Option>
                                 <Option value="500">500gms</Option>

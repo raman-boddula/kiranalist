@@ -75,7 +75,10 @@
   height: 300px;
   border-radius: 1em;
   background-image: linear-gradient(to right, white, #b8fff9);
+}
 
+.detailsDiv:after {
+  backdrop-filter: blur(8px);
 }
 
 .flexProduct {

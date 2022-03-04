@@ -42,12 +42,12 @@ export const HomePage = () => {
     }
     return (isLoading ? <div>Loading...</div> :
         <div className="HomePage">
-            <div className="products">
+            <div className="products" style={{filter : showDiv ? "blur(2px)" : "blur(0)"}}>
                 {data?.map((e) => (
                     <Product key={e._id} product={e} handleShowDiv={handleShowDiv} />
                 ))}
             </div>
-            <Pagination onChange={handlePageChange} defaultPageSize={6} pageSize={6} total={total*6} style={{margin:0,alignItems:"center"}} />
+            <Pagination onChange={handlePageChange} defaultPageSize={6} pageSize={6} total={total*6} style={{marginTop:"20px"}} />
             {showDiv && data.map((e) => (
                 e._id === product && <div className = "detailsDiv" >
                     <div >

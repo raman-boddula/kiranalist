@@ -83,12 +83,6 @@
   height: 300px;
   border-radius: 1em;
   background-image: linear-gradient(to right, white, #b8fff9);
-  /* height: 400px;     */
-  /* background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee), color-stop(0.75, #eee)); */
-}
-
-.detailsDiv:after {
-  backdrop-filter: blur(8px);
 }
 
 .flexProduct {

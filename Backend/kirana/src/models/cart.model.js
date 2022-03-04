@@ -9,11 +9,8 @@ const cartSchema = new mongoose.Schema(
       ref: user,
       required: true,
     },
-    product_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: product,
-      requried: true,
-    },
+    product_list: [{ type: String, required: true }],
+    date_of_purchase: { type: String, required: true },
   },
   {
     versionKey: false,

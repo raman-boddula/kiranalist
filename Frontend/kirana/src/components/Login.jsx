@@ -16,7 +16,7 @@ export const Login = () => {
         console.log("loginUser", user)
         axios.post("http://localhost:2345/login", user).then((response) => {
             console.log("success", response);
-            localStorage.setItem("isAuth", JSON.stringify(response.data));
+            sessionStorage.setItem("isAuth", JSON.stringify(response.data));
             navigate('/')
         }).catch((error) => {
             alert(`Error Message ${error}`);

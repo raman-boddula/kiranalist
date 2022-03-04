@@ -1,5 +1,12 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
+  border: 1px solid black;
+  height: 100vh;
 }
 
 .HomePage {
@@ -13,13 +20,13 @@
   padding: 0 4em;
 }
 
-.navbar>div:nth-child(2) {
+.navbar > div:nth-child(2) {
   display: flex;
   min-width: 200px;
   justify-content: space-between;
 }
 
-.navbar>div:nth-child(2)>p {
+.navbar > div:nth-child(2) > p {
   margin-top: 10px;
 }
 
@@ -34,33 +41,34 @@
   margin-left: 5%;
   grid-gap: 1em;
   grid-template-columns: repeat(3, 32.5%);
+  margin-top: 20px;
 }
 
 .products img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 }
 
 .products div {
-  margin: 20px;
-  padding: 20px;
+  margin: 5px;
+  padding: 5px;
   position: relative;
 }
 
-.products div>button {
+.products div > button {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-.products>div:hover {
+.products > div:hover {
   box-shadow: 0px 6px 10px 6px #85f4ff;
   transition: 0.2s ease-in-out;
   cursor: pointer;
 }
 
-.products>div:hover>div {
+.products > div:hover > div {
   filter: blur(2px);
   transition: 0.4s ease-in-out;
 }
@@ -75,6 +83,8 @@
   height: 300px;
   border-radius: 1em;
   background-image: linear-gradient(to right, white, #b8fff9);
+  /* height: 400px;     */
+  /* background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee), color-stop(0.75, #eee)); */
 }
 
 .detailsDiv:after {

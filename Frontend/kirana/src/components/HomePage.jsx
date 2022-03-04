@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import { Product } from "./Product";
 import  {AiOutlineClose}  from 'react-icons/ai';
-import {  Button, Input, Select} from "antd";
+import {  Button, Input, Select,Pagination} from "antd";
 const { Option } = Select;
 export const HomePage = () => {
     const [data, setData] = React.useState([]);
@@ -10,13 +10,15 @@ export const HomePage = () => {
     const [showDiv, setShowDiv] = React.useState(false);
     const [product, setProduct] = React.useState("");
     const [page, setPage] = React.useState(1);
+    const [total, setTotal] = React.useState(0);
     const [quantity, setQuantity] = React.useState(0);
     const [weight,setWeight] = React.useState(0)
     const [list, setList] = React.useState([]);
     React.useEffect(() => {
         axios.get(`http://localhost:2345/products/?Page=${page}`).then((res) => {
             console.log(res);
-            setData([...data,...res.data.products]);
+            setData([...res.data.products]);
+            setTotal(res.data.total_pages);
             setIsLoading(false);
         })
     }, [page]);
@@ -24,21 +26,28 @@ export const HomePage = () => {
         setProduct(id);
         setShowDiv(true);
     }
-    window.addEventListener("scroll", () => {
-        if (window.scrollY + window.innerHeight >=  document.documentElement.scrollHeight) {
-        //   setPage(page+1);
-        };
-      });
+    // window.addEventListener("scroll", () => {
+    //     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight && page <= total) {
+    //         console.log(page);
+    //       setPage(page+1);
+    //     };
+    //   });
+
     const handleQuantity = (name) => {
         setList([...list,{[name]:(Number(quantity)*Number(weight))/1000}]);
+    }
+    const handlePageChange = (value) => {
+        // console.log(value);
+        setPage(value)
     }
     return (isLoading ? <div>Loading...</div> :
         <div className="HomePage">
             <div className="products">
-                {data.map((e) => (
+                {data?.map((e) => (
                     <Product key={e._id} product={e} handleShowDiv={handleShowDiv} />
                 ))}
             </div>
+            <Pagination onChange={handlePageChange} defaultPageSize={6} pageSize={6} total={total*6} style={{margin:0,alignItems:"center"}} />
             {showDiv && data.map((e) => (
                 e._id === product && <div className = "detailsDiv" >
                     <div >
@@ -53,7 +62,6 @@ export const HomePage = () => {
                             <Input type="number" placeholder="choose the quantity" onChange={(e) => setQuantity(e.target.value)} />
                             <br/><br/>
                             <Select style={{width:"100%"}} placeholder="choose the weight" onChange={(value) => setWeight(value)}>
-                                {/* <Option default>Choose the weight</Option> */}
                                 <Option value="100">100gms</Option>
                                 <Option value="250">250gms</Option>
                                 <Option value="500">500gms</Option>

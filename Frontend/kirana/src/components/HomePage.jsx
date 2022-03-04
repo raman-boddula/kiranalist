@@ -2,9 +2,10 @@ import React from 'react';
 import axios from "axios";
 import { Product } from "./Product";
 import { AiOutlineClose } from 'react-icons/ai';
-import { Loader } from './Loading';
+import { TailSpin } from  'react-loader-spinner'
 import {  Button, Input, Select,Pagination} from "antd";
 const { Option } = Select;
+
 export const HomePage = () => {
     const [data, setData] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
@@ -16,6 +17,7 @@ export const HomePage = () => {
     const [weight,setWeight] = React.useState(0)
     const [list, setList] = React.useState([]);
     React.useEffect(() => {
+        setIsLoading(true);
         axios.get(`http://localhost:2345/products/?Page=${page}`).then((res) => {
             console.log(res);
             setData([...res.data.products]);
@@ -38,10 +40,10 @@ export const HomePage = () => {
         setList([...list,{[name]:(Number(quantity)*Number(weight))/1000}]);
     }
     const handlePageChange = (value) => {
-        // console.log(value);
-        setPage(value)
+        console.log(value);
+        value <= total ? setPage(value) : setPage(0);
     }
-    return (isLoading ? <Loader/> :
+    return (isLoading ? <div className="loader"><TailSpin color="black"/></div> :
         <div className="HomePage">
             <div className="products" style={{filter : showDiv ? "blur(2px)" : "blur(0)"}}>
                 {data?.map((e) => (

@@ -39,7 +39,7 @@ export const Register = () => {
                     <div style={{display:'grid',gridTemplateColumns:"20% 75%"}}><label>Password</label>
                     <Input type="password" name="Password" onChange={handleChange} placeholder="enter your password" /></div>
                     <div><br></br></div>
-                    <div style={{display:'grid',gridTemplateColumns:"20% 75%"}}><label>Date of Birth  &ensp;</label>
+                    <div style={{display:'grid',gridTemplateColumns:"20% 75%"}}><label>Age &ensp;</label>
                     <Input type="number" name="Age" onChange={handleChange} placeholder="Enter your age" /></div>
                     <div><br></br></div>
                     <label>Gender &ensp;</label>

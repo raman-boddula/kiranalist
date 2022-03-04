@@ -106,3 +106,12 @@
   height: 200px;
   margin-right: 25px;
 }
+
+.loader {
+  height: 80px;
+  width: 80px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

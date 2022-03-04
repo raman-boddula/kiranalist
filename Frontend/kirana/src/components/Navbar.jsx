@@ -4,10 +4,10 @@ import { Dropdown, Menu } from 'antd';
 import { useNavigate,Link } from "react-router-dom";
 
 export const Navbar = () => {
-    const userName = JSON.parse(localStorage.getItem('isAuth'))?.user?.Name;
+    const userName = JSON.parse(sessionStorage.getItem('isAuth'))?.user?.Name;
     const navigate = useNavigate();
     const handleLogout = () => {
-        localStorage.removeItem('isAuth');
+        sessionStorage.removeItem('isAuth');
         navigate('/login')
     }
     const menu = (

@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from "axios";
 import { Product } from "./Product";
-import  {AiOutlineClose}  from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
+import { Loader } from './Loading';
 import {  Button, Input, Select,Pagination} from "antd";
 const { Option } = Select;
 export const HomePage = () => {
@@ -40,7 +41,7 @@ export const HomePage = () => {
         // console.log(value);
         setPage(value)
     }
-    return (isLoading ? <div>Loading...</div> :
+    return (isLoading ? <Loader/> :
         <div className="HomePage">
             <div className="products">
                 {data?.map((e) => (

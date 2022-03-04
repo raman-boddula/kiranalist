@@ -30,15 +30,10 @@ export const HomePage = () => {
         setProduct(id);
         setShowDiv(true);
     }
-    // window.addEventListener("scroll", () => {
-    //     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight && page <= total) {
-    //         console.log(page);
-    //       setPage(page+1);
-    //     };
-    //   });
 
     const handleQuantity = (name) => {
-        handleList({[name]:(Number(quantity)*Number(weight))/1000});
+        handleList({Name:name,Quantity:(Number(quantity) * Number(weight)) / 1000+"Kg"});
+        setShowDiv(false)
     }
     const handlePageChange = (value) => {
         console.log(value);

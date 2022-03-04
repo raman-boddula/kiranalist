@@ -27,8 +27,8 @@ export const Navbar = () => {
                     <div>
                         <Dropdown.Button overlay={menu} placement="bottomRight" style={{ marginTop: "10px" }}>Welcome {userName}</Dropdown.Button>
                         <div style={{position: "relative"}}>
-                            <img src="https://cdn-icons-png.flaticon.com/512/650/650661.png" alt="Notepad" style={{cursor: "pointer"}}/>
-                            <h3 className="counter" style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-35%,-40%)",color:"#4b6e7f"}}>{list.length}</h3>
+                           <Link to="list"> <img src="https://cdn-icons-png.flaticon.com/512/650/650661.png" alt="Notepad" style={{cursor: "pointer"}}/></Link>
+                            <h3 className="counter" style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-35%,-40%)",color:"black",fontSize:"1.5em",fontWeight:"bold"}}>{list.length}</h3>
                         </div>
                     </div>
                 : null}

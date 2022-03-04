@@ -3,7 +3,7 @@ import { Button, Input, Form } from "antd";
 import { Link } from 'react-router-dom';
 import {useNavigate} from "react-router-dom"
 import axios from 'axios';
-import "./Style.css"
+
 export const Login = () => {
     const [user, setUser] = React.useState({});
     const handleChange = (e) => {

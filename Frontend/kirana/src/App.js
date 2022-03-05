@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { Register } from "./components/Register";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { Login } from "./components/Login";
+import { List } from "./components/List";
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
           element={<PrivateRoute>{<HomePage />}</PrivateRoute>}
         ></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/list" element={<List />}></Route>
       </Routes>
     </div>
   );

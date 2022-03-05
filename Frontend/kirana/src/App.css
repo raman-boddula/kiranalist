@@ -55,7 +55,7 @@
   position: relative;
 }
 
-.products div > button {
+.products div button {
   position: absolute;
   left: 50%;
   top: 50%;

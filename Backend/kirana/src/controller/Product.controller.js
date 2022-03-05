@@ -4,9 +4,7 @@ const router = express.Router();
 
 const Product = require("../models/product.model");
 
-const { createClient } = require("redis");
-
-const redis = createClient();
+const redis = require("../configs/redis");
 
 redis.connect();
 

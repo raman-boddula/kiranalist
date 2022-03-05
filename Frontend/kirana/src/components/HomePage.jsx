@@ -18,13 +18,14 @@ export const HomePage = () => {
     const [weight,setWeight] = React.useState(0)
     const {handleList} = React.useContext(ListContext)
     React.useEffect(() => {
+        console.log('use page',page)
         setIsLoading(true);
-        axios.get(`http://localhost:2345/products/?Page=${page}`).then((res) => {
+        setTimeout(()=>(axios.get(`http://localhost:2345/products?Page=${page}`).then((res) => {
             console.log(res);
-            setData([...res.data.products]);
+            setData(res.data.products);
             setTotal(res.data.total_pages);
             setIsLoading(false);
-        })
+        })),1000)
     }, [page]);
     const handleShowDiv = (id) => {
         setProduct(id);
@@ -37,7 +38,7 @@ export const HomePage = () => {
     }
     const handlePageChange = (value) => {
         console.log(value);
-        value <= total ? setPage(value) : setPage(0);
+        setPage(value);
     }
     return (isLoading ? <div className="loader"><TailSpin color="black"/></div> :
         <div className="HomePage">
@@ -46,7 +47,7 @@ export const HomePage = () => {
                     <Product key={e._id} product={e} handleShowDiv={handleShowDiv} />
                 ))}
             </div>
-            <Pagination onChange={handlePageChange} defaultPageSize={6} pageSize={6} total={total*6} style={{marginTop:"20px"}} />
+            <Pagination onChange={handlePageChange} defaultPageSize={6} pageSize={6} total={total*6} style={{marginTop:"8em"}} />
             {showDiv && data.map((e) => (
                 e._id === product && <div className = "detailsDiv" >
                     <div >

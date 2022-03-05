@@ -12,7 +12,7 @@ export const Product = ({ product,handleShowDiv }) => {
                 <img src={product?.Image[0]} alt={product.Name} /><br/><br/>
                 <h4>{product.Name}</h4><br/>
             </div>
-            {showbutton ? list.map((e)=>(e.Name===product.Name ? <Link to="/list"><Button type="primary" shape="round" size="large" className="addbtn">Go To List</Button></Link> : <Button type="primary" shape="round" size="large" onClick={()=>handleShowDiv(product._id)} className="addbtn">Add Quantity</Button>))  : null}
+            {showbutton ? <Button type="primary" shape="round" size="large" onClick={()=>handleShowDiv(product._id)} className="addbtn">Add Quantity</Button> : null}
         </div>
     )
 }

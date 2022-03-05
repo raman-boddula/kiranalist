@@ -1,8 +1,8 @@
 const connect = require("./configs/db");
 
 const app = require("./index");
-
-app.listen("2345", async () => {
+const PORT = process.env.PORT || 2345;
+app.listen(PORT, async () => {
   await connect();
-  console.log("Listening on port 2345");
+  console.log(`Listening on port ${PORT}`);
 });

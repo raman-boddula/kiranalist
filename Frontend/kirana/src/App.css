@@ -3,6 +3,7 @@
   padding: 0px;
   box-sizing: border-box;
 }
+
 .App {
   text-align: center;
   border: 1px solid black;
@@ -20,13 +21,13 @@
   padding: 0 4em;
 }
 
-.navbar > div:nth-child(2) {
+.navbar>div:nth-child(2) {
   display: flex;
   min-width: 200px;
   justify-content: space-between;
 }
 
-.navbar > div:nth-child(2) > p {
+.navbar>div:nth-child(2)>p {
   margin-top: 10px;
 }
 
@@ -41,7 +42,7 @@
   margin-left: 5%;
   grid-gap: 1em;
   grid-template-columns: repeat(3, 32.5%);
-  margin-top: 20px;
+  margin-top: 8em;
 }
 
 .products img {
@@ -62,13 +63,13 @@
   transform: translate(-50%, -50%);
 }
 
-.products > div:hover {
+.products>div:hover {
   box-shadow: 0px 6px 10px 6px #85f4ff;
   transition: 0.2s ease-in-out;
   cursor: pointer;
 }
 
-.products > div:hover > div {
+.products>div:hover>div {
   filter: blur(2px);
   transition: 0.4s ease-in-out;
 }
@@ -115,9 +116,11 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
 .loginForm {
   background-image: linear-gradient(to right, white, #42c2ff);
 }
+
 /* .counter {
   width: "30px";
   height: "30px";

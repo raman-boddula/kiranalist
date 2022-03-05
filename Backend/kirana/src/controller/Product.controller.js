@@ -29,9 +29,9 @@ router.get("/", async (req, res) => {
     const size = +req.query.size || 6;
     const offset = (page - 1) * size;
     let product = JSON.parse(await redis.get("products"));
-    if (product.length > 0) {
+    if (product) {
       // console.log("hello", product, product.length);
-      const total_pages = product.length / size;
+      const total_pages = Math.ceil(product.length / size);
       if (page == 1) {
         try {
           let pagee = JSON.parse(await redis.get("page1"));
@@ -87,7 +87,7 @@ router.get("/", async (req, res) => {
             res.status(200).json({ products: pagee, total_pages: total_pages });
           } else {
             let page4 = [];
-            for (let i = size * 3; i < 4 * size; i++) {
+            for (let i = size * 3; i < product.length; i++) {
               page4.push(product[i]);
             }
             redis.set("page4", JSON.stringify(page4));

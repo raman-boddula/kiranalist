@@ -16,10 +16,11 @@ export const HomePage = () => {
     const [total, setTotal] = React.useState(0);
     const [quantity, setQuantity] = React.useState(0);
     const [weight,setWeight] = React.useState(0)
-    const {handleList} = React.useContext(ListContext)
+    const { handleList, list } = React.useContext(ListContext)
+    // const []
     React.useEffect(() => {
         setIsLoading(true);
-        axios.get(`http://localhost:2345/products/?Page=${page}`).then((res) => {
+        axios.get(`https://kiranamlist.herokuapp.com/products/?Page=${page}`).then((res) => {
             console.log(res);
             setData([...res.data.products]);
             setTotal(res.data.total_pages);
@@ -42,9 +43,17 @@ export const HomePage = () => {
     return (isLoading ? <div className="loader"><TailSpin color="black"/></div> :
         <div className="HomePage">
             <div className="products" style={{filter : showDiv ? "blur(2px)" : "blur(0)"}}>
-                {data?.map((e) => (
-                    <Product key={e._id} product={e} handleShowDiv={handleShowDiv} />
-                ))}
+                {data?.map((e) =>
+                {
+                    console.log(e);
+                    let shwLstBtn;
+                    list.forEach((listItem) => {
+                        shwLstBtn = listItem.Name === e.Name ? true : false;
+                        
+                    });
+                    return (
+                    <Product key={e._id} product={e} handleShowDiv={handleShowDiv} shwLstBtn={shwLstBtn}/>
+                )})}
             </div>
             <Pagination onChange={handlePageChange} defaultPageSize={6} pageSize={6} total={total*6} style={{marginTop:"20px"}} />
             {showDiv && data.map((e) => (

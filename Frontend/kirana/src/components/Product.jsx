@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button } from 'antd';
-import { ListContext } from "../contexts/ListContext"
+// import { ListContext } from "../contexts/ListContext"
 import { Link } from "react-router-dom";
 
 export const Product = ({ product,handleShowDiv,shwLstBtn }) => {
     const [showbutton, setShowbutton] = React.useState(false);
-    const { list } = React.useContext(ListContext);
+    // const { list } = React.useContext(ListContext);
     // console.log(product, list, "afjdfdsfj");
     return (
         <div onMouseEnter={() => setShowbutton(true)} onMouseLeave={() => setShowbutton(false)}>

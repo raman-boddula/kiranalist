@@ -19,13 +19,14 @@ export const HomePage = () => {
     const { handleList, list } = React.useContext(ListContext)
     // const []
     React.useEffect(() => {
-        setIsLoading(true);
-        axios.get(`https://kiranamlist.herokuapp.com/products/?Page=${page}`).then((res) => {
+        console.log('use page',page)
+        setIsLoading(true);        
+        setTimeout(() => (axios.get(`https://kiranamlist.herokuapp.com/products/?Page=${page}`).then((res) => {
             console.log(res);
-            setData([...res.data.products]);
+            setData(res.data.products);
             setTotal(res.data.total_pages);
             setIsLoading(false);
-        })
+        })), 1000)
     }, [page]);
     const handleShowDiv = (id) => {
         setProduct(id);
@@ -38,7 +39,7 @@ export const HomePage = () => {
     }
     const handlePageChange = (value) => {
         console.log(value);
-        value <= total ? setPage(value) : setPage(0);
+        setPage(value);
     }
     return (isLoading ? <div className="loader"><TailSpin color="black"/></div> :
         <div className="HomePage">
@@ -48,14 +49,13 @@ export const HomePage = () => {
                     console.log(e);
                     let shwLstBtn;
                     list.forEach((listItem) => {
-                        shwLstBtn = listItem.Name === e.Name ? true : false;
-                        
+                        shwLstBtn = listItem.Name === e.Name ? true : false;                        
                     });
                     return (
                     <Product key={e._id} product={e} handleShowDiv={handleShowDiv} shwLstBtn={shwLstBtn}/>
                 )})}
             </div>
-            <Pagination onChange={handlePageChange} defaultPageSize={6} pageSize={6} total={total*6} style={{marginTop:"20px"}} />
+            <Pagination onChange={handlePageChange} defaultPageSize={6} pageSize={6} total={total*6} style={{marginTop:"8em"}} />
             {showDiv && data.map((e) => (
                 e._id === product && <div className = "detailsDiv" >
                     <div >

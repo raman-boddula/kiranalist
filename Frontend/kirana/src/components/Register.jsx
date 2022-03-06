@@ -17,7 +17,7 @@ export const Register = () => {
     const handleClick = (e) => {
         e.preventDefault();
         console.log('registered User', user);
-        axios.post("http://localhost:2345/register", user).then((response) => {
+        axios.post("https://kiranamlist.herokuapp.com/register", user).then((response) => {
             console.log(response);
             navigate("/login");
         }).catch((error) => {

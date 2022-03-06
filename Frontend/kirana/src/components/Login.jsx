@@ -14,7 +14,7 @@ export const Login = () => {
     const handleSubmit=(e)=>{
         e.preventDefault();
         console.log("loginUser", user)
-        axios.post("http://localhost:2345/login", user).then((response) => {
+        axios.post("https://kiranamlist.herokuapp.com/login", user).then((response) => {
             console.log("success", response);
             sessionStorage.setItem("isAuth", JSON.stringify(response.data));
             navigate('/')
